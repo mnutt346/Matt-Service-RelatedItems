@@ -27,7 +27,7 @@ export default class Related extends React.Component {
             return (
               <div key={i} className='item'>
                 <div className='image'>
-                  <img src={item.fullimg} width='20%' align='top' />
+                  <img src={item.full_img} width='150px' align='top' />
                   <span className='name'>{item.name}</span>
                   <br />
                   <span className='blurb'>{item.blurb}></span>
