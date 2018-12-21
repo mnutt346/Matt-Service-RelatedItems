@@ -11,7 +11,7 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/related', (req, res, next) => {
-  db.query('SELECT name, blurb, fullImg FROM projects', (err, result) => {
+  db.query('SELECT * FROM projects', (err, result) => { //name, blurb, fullImg
     if (err) {
       return next(err)
     } else {
@@ -21,15 +21,7 @@ app.get('/related', (req, res, next) => {
   })
 })
 
-// app.post('/search', (req, res, next) => {
-//   console.log(req.body)
-//   //db.query('SELECT blurb FROM projects')
-// })
-
 app.listen(port, () => {
   console.log(`server running at: http://localhost:${port}`);
 });
-
-
-//app.use(express.static('public'))
 
