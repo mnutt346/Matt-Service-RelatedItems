@@ -7,7 +7,7 @@ export default class Related extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/related')
+    fetch('http://ec2-18-216-54-110.us-east-2.compute.amazonaws.com:3000/related')
       .then(data => data.json())
       .then(json => {
         let newState = {};
