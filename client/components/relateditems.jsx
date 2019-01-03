@@ -1,13 +1,32 @@
 import React from 'react'
 
-export default class Related extends React.Component {
+const itemStyle = {
+  width: '60%',
+  margin: '16px auto',
+  border: '1px solid #eee',
+  boxShadow: '0 2px 3px #ccc',
+  padding: '16px',
+  // textAlign: 'center'
+}
+
+const nameStyle = {
+  fontFamily: 'arial',
+  fontSize: '16px'
+}
+
+
+
+
+
+class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = { items: [] }
   }
 
+  // url - http://ec2-18-216-54-110.us-east-2.compute.amazonaws.com
   componentDidMount() {
-    fetch('http://ec2-18-216-54-110.us-east-2.compute.amazonaws.com:3000/related')
+    fetch('http://localhost:3000/related')
       .then(data => data.json())
       .then(json => {
         let newState = {};
@@ -25,16 +44,17 @@ export default class Related extends React.Component {
         {this.state.items.map((item, i) => {
           if (i < 5) {
             return (
-              <div key={i} className='item'>
+              <div key={i} className='item' style={itemStyle}>
                 <div className='image'>
                   <img src={item.full_img} width='150px' align='top' />
-                  <span className='name'>{item.name}</span>
+                  <span className='name' style={nameStyle}>{item.name}</span>
                   <br />
                   <span className='blurb'>{item.blurb}></span>
                   <br />
                 </div>
                 <hr />
               </div>
+
             )
           }
         })}
@@ -42,3 +62,5 @@ export default class Related extends React.Component {
     )
   }
 }
+
+export default Related;
