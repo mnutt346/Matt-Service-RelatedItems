@@ -20,6 +20,19 @@ app.get('/related', (req, res, next) => {
   })
 })
 
+app.get('/related/:id', (req, res, next) => {
+  console.log('\nthis should be an id', req.params.id, '\n')
+  db.query('SELECT * FROM projects', (err, result) => { //name, blurb, fullImg
+    if (err) {
+      console.log('error', err)
+      return next(err)
+    } else {
+      console.log('success')
+      res.send(result.rows)
+    }
+  })
+})
+
 app.listen(port, () => {
   console.log(`server running at: http://localhost:${port}`);
 });
