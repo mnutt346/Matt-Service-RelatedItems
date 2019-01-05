@@ -27,6 +27,7 @@ class Related extends React.Component {
 
   // url - http://ec2-18-216-54-110.us-east-2.compute.amazonaws.com
   componentDidMount() {
+
     fetch(`http://${window.location.hostname}:3000/related`)
       .then(data => data.json())
       .then(json => {
