@@ -1,15 +1,14 @@
-const { Pool } = require('pg')
-require('dotenv').config()
+const mariadb = require("mariadb");
 
-const pool = new Pool({
-    database: process.env.DB_NAME || 'projects',
-    host: process.env.DB_HOST || '127.0.0.1',
-    user: process.env.DB_USER || 'student',
-    password: process.env.DB_PASSWORD || 'student'
-})
-
-module.exports = {
-    query: (text, params, callback) => {
-        return pool.query(text, params, callback)
-    }
-}
+mariadb
+  .createConnection({
+    user: "betterJumpUser",
+    host: "127.0.0.1",
+    port: 3306
+  })
+  .then(conn => {
+    console.log("Conectado a la base de datos");
+  })
+  .catch(err => {
+    console.log("ERROR CONNECTING TO DATABASE: ", err);
+  });

@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS projects;
 
 CREATE DATABASE projects;
 
-\c projects;
+USE projects;
 
 CREATE TABLE projects
 (
@@ -18,3 +18,4 @@ CREATE TABLE projects
     created_at varchar(255),
     description varchar(255)
 );
+
