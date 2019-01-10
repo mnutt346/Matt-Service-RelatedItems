@@ -19,3 +19,7 @@ CREATE TABLE projects
     description varchar(255)
 );
 
+INSERT INTO projects
+    (name, creator, blurb, location, category)
+VALUES
+    ('Real Doctors. Really', 'Best Doctors of America', 'Real doctors for real people. You''re gonna like the way you''re not sick. We guarantee it.', 'CANADA', 'Politics');
