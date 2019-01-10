@@ -1,0 +1,22 @@
+version: "2"
+services:
+  app:
+    container_name: app
+    restart: always
+    build: .
+    ports:
+      - "3004:3004"
+    links:
+      - mariadb
+  mariadb:
+    image: mariadb:latest
+    build: ./db
+    container_name: mariadb
+    environment:
+      - MYSQL_DATABASE=projects
+      - MYSQL_USER=betterJumpUser
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - /var/lib/mysql
+    ports:
+      - "3306"
