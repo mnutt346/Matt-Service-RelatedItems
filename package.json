@@ -8,7 +8,8 @@
     "build": "webpack -d -w",
     "start": "nodemon ./server/server.js",
     "restart": "pm2 startOrRestart ecosystem.config.js",
-    "deploy": "pm2 deploy ecosystem.config.js production"
+    "deploy": "pm2 deploy ecosystem.config.js production",
+    "fix-memory-limit": "cross-env LIMIT=4096 increase-memory-limit"
   },
   "keywords": [],
   "author": "",
@@ -23,11 +24,10 @@
     "dotenv": "^6.2.0",
     "eslint": "^5.12.0",
     "express": "^4.16.2",
+    "faker": "^4.1.0",
     "jest": "^22.3.0",
     "knex": "^0.16.3",
-    "mariadb": "^2.0.2-rc",
     "morgan": "^1.9.1",
-    "mysql": "^2.16.0",
     "nodemon": "^1.18.9",
     "pg": "^7.7.1",
     "react": "^16.2.0",
@@ -35,6 +35,8 @@
     "webpack": "^3.11.0"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
+    "increase-memory-limit": "^1.0.6",
     "pm2": "^3.2.4"
   }
 }

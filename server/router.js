@@ -3,14 +3,13 @@ const router = express.Router();
 const getRelated = require("../db/index.js");
 
 router.get("/related", (req, res) => {
-  console.log("in router GET /related");
   getRelated()
     .then(results => {
-      console.log(results);
-      res.send(results);
+      res.status(200).send(results);
     })
     .catch(err => {
       console.log("ERROR IN GET /related FUCK! :", err);
+      res.status(500).send("GET related projects FAILED");
     });
 });
 

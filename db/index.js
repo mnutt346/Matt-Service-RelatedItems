@@ -1,28 +1,13 @@
 require("dotenv").config();
-const mysql = require("mariadb");
+// const mariadb = require("mariadb");
 const knex = require("knex")({
-  client: "mysql",
+  client: "pg",
   connection: {
     database: "projects",
     host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: ""
+    user: process.env.DB_USER
   }
 });
-
-// mariadb
-//   .createConnection({
-//     user: process.env.DB_USER,
-//     host: process.env.DB_HOST,
-//     port: process.env.DB_PORT
-//   })
-//   .then(conn => {
-//     console.log("Conectado a la base de datos");
-//     // conn.destroy();
-//   })
-//   .catch(err => {
-//     console.log("ERROR CONNECTING TO DATABASE: ", err);
-//   });
 
 const getRelated = () => {
   console.log("in GET /related");
