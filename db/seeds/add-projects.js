@@ -1,29 +1,31 @@
 const faker = require("faker");
-
-const createProject = () => ({
-  name: faker.company.companyName(),
-  creator: faker.name.findName(),
-  creatorImg: faker.internet.avatar(),
-  blurb: faker.lorem.sentence(),
-  thumbnail: faker.image.avatar(),
-  fullImg: faker.image.business(),
-  location: faker.address.state(),
-  category: faker.lorem.word(),
-  created_at: faker.date.past(),
-  description: faker.company.catchPhrase()
-});
+const fs = require("fs");
+const path = require("path");
+const csv = require("csv-parser");
 
 exports.seed = async function(knex, Promise) {
-  let fakeProjects = [];
-  for (let i = 0; i < 10000000; i++) {
-    fakeProjects.push(createProject());
-  }
-  // await knex.batchInsert("projects", fakeProjects, 10).catch(err => {
-  //   console.log("ERROR ON BATCH ISERT: THAT'S TOO MUCH SHIT");
-  // });
-  await knex("projects")
-    .insert(fakeProjects)
-    .catch(err => {
-      console.log("ERROR IN INSERT: TOO MUCH SHIT: ", err);
+  const headers =
+    "name,creator,creatorImg,blurb,thumbnail,fullImg,location,category,created_at,description\n";
+
+  fs.truncate("projects.csv", 0, err => {
+    if (err) console.log("ERROR TRUNCATING FILE ", err);
+  });
+
+  fs.writeFile("projects.csv", headers, err => {
+    if (err) console.log("ERROR WRITING FILE: ", err);
+  });
+
+  for (let i = 0; i < 100; i++) {
+    let financialMistake = `${faker.company.companyName()},${faker.name.findName()},${faker.internet.avatar()},${faker.lorem.sentence()},${faker.image.avatar()},${faker.image.business()},${faker.address.state()},${faker.lorem.word()},${faker.date.past()},${faker.company.catchPhrase()}\n`;
+    fs.appendFile("projects.csv", financialMistake, err => {
+      if (err) console.log("ERROR APPENDING FILE: ", err);
     });
+  }
+
+  fs.createReadStream("projects.csv")
+    .on("open", something =>
+      console.log("what the fuck is going on: ", something)
+    )
+    .pipe(csv())
+    .on("data", () => console.log("DATATATATTATA", data));
 };

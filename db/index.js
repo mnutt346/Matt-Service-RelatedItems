@@ -1,5 +1,5 @@
 require("dotenv").config();
-// const mariadb = require("mariadb");
+
 const knex = require("knex")({
   client: "pg",
   connection: {
