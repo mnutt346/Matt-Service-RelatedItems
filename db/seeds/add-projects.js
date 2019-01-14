@@ -1,6 +1,5 @@
 const faker = require("faker");
 const fs = require("fs");
-const path = require("path");
 const csv = require("csv-parser");
 
 exports.seed = async function(knex, Promise) {
@@ -23,9 +22,6 @@ exports.seed = async function(knex, Promise) {
   }
 
   fs.createReadStream("projects.csv")
-    .on("open", something =>
-      console.log("what the fuck is going on: ", something)
-    )
     .pipe(csv())
     .on("data", () => console.log("DATATATATTATA", data));
 };

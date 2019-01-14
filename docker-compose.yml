@@ -7,16 +7,15 @@ services:
     ports:
       - "3004:3004"
     links:
-      - mariadb
-  mariadb:
-    image: mariadb:latest
-    build: ./db
-    container_name: mariadb
+      - postgres
+  postgres:
+    image: postgres:latest
+    container_name: postgres
     environment:
-      - MYSQL_DATABASE=projects
-      - MYSQL_USER=betterJumpUser
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      POSTGRES_USER: betterjumpuser
+      POSTGRES_HOST: postgres://localhost:5432/projects
+      POSTGRES_DB: projects
     volumes:
-      - /var/lib/mysql
+      - /var/lib/postgresql/data
     ports:
-      - "3306"
+      - "5432"
