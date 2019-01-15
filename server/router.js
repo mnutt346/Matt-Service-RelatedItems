@@ -8,7 +8,7 @@ router.get("/related", (req, res) => {
       res.status(200).send(results);
     })
     .catch(err => {
-      console.log("ERROR IN GET /related FUCK! :", err);
+      console.log("ERROR IN GET /related: ", err);
       res.status(500).send("GET related projects FAILED");
     });
 });
