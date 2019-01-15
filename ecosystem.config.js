@@ -1,17 +1,19 @@
 module.exports = {
-    apps: [{
-        name: 'related-items-service',
-        script: './server/server.js'
-    }],
-    deploy: {
-        production: {
-            user: 'ubuntu',
-            host: 'ec2-18-216-54-110.us-east-2.compute.amazonaws.com',
-            key: '~/.ssh/related.pem',
-            ref: 'origin/master',
-            repo: 'git@github.com:ghostrib/Matt-Service-Related.git',
-            path: '/home/ubuntu/related-items-service',
-            'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
-        }
+  apps: [
+    {
+      name: "related-items-service",
+      script: "./server/server.js"
     }
-}
+  ],
+  deploy: {
+    production: {
+      user: "ubuntu",
+      host: "ec2-3-90-224-56.compute-1.amazonaws.com",
+      key: "~/.ssh/betterJumpBackend.pem",
+      ref: "origin/master",
+      repo: "git@github.com:mnutt346/Matt-Service-RelatedItems.git",
+      path: "/home/ubuntu/",
+      "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.js"
+    }
+  }
+};
