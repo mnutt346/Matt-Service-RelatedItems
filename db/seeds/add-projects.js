@@ -1,3 +1,4 @@
+require("dotenv").config();
 const faker = require("faker");
 const fs = require("fs");
 const csv = require("csv-parser");
