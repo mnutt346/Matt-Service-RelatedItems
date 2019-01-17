@@ -9,7 +9,6 @@
     "start": "nodemon ./server/server.js",
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "deploy": "pm2 deploy ecosystem.config.js production",
-    "fix-memory-limit": "cross-env LIMIT=4096 increase-memory-limit",
     "make-csv": "node --max-old-space-size=4096 ./db/csvCreator.js",
     "seed": "psql projects -c 'COPY projects (name, blurb, thumbnail) FROM STDIN WITH (FORMAT CSV, HEADER TRUE);' < ./projects.csv"
   },
@@ -43,8 +42,7 @@
     "cross-env": "^5.2.0",
     "csv-parser": "^2.1.0",
     "dotenv": "^6.2.0",
-    "increase-memory-limit": "^1.0.6",
-    "pm2": "^3.2.4",
+    "pm2": "^3.2.9",
     "sqlite3": "^4.0.6"
   }
 }
