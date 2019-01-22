@@ -6,7 +6,7 @@ module.exports = {
     connection: {
       database: "projects",
       host: process.env.DB_HOST,
-      user: process.env.DB_USER
+      user: process.env.DB_USER || "ubuntu"
     },
     migrations: {
       directory: __dirname + "/migrations"

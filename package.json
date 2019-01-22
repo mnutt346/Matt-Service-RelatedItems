@@ -10,7 +10,8 @@
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "deploy": "pm2 deploy ecosystem.config.js production",
     "make-csv": "node --max-old-space-size=4096 ./db/csvCreator.js",
-    "seed": "psql projects -c 'COPY projects (name, blurb, thumbnail) FROM STDIN WITH (FORMAT CSV, HEADER TRUE);' < ./projects.csv"
+    "seed": "psql projects -c 'COPY projects (name, blurb, thumbnail) FROM STDIN WITH (FORMAT CSV, HEADER TRUE);' < ./projects.csv",
+    "seed-mongo": "mongoimport -d projects -c projects --type csv --file projects.csv --headerline"
   },
   "keywords": [],
   "author": "",

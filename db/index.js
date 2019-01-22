@@ -5,7 +5,7 @@ const knex = require("knex")({
   connection: {
     database: "projects",
     host: "127.0.0.1",
-    user: process.env.DB_USER
+    user: process.env.DB_USER || "ubuntu"
   }
 });
 
