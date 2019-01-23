@@ -8,3 +8,5 @@ class UserBehavior(TaskSet):
 
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
+    min_wait = 50
+    max_wait = 750
